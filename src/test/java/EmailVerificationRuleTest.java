@@ -25,4 +25,23 @@ public class EmailVerificationRuleTest {
     public void testDuplicateEmailFailsCaseInsensitive() {
         assertThrows(EmailVerificationException.class, () -> emailRule.validate("ExistingUser@Example.com"));
     }
+
+    @Test
+    public void testInvalidEmailFormatFails() {
+        EmailVerificationException exception = assertThrows(
+                EmailVerificationException.class,
+                () -> emailRule.validate("invalid-email")
+        );
+        assertEquals("Invalid email format. Please use the format username@domain.com.", exception.getMessage());
+    }
+
+    @Test
+    public void testInvalidEmailMissingAtSymbol() {
+        assertThrows(EmailVerificationException.class, () -> emailRule.validate("userexample.com"));
+    }
+
+    @Test
+    public void testInvalidEmailMissingDomain() {
+        assertThrows(EmailVerificationException.class, () -> emailRule.validate("user@"));
+    }
 }

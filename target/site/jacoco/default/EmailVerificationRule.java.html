@@ -9,14 +9,20 @@ public class EmailVerificationRule {
 <span class="fc" id="L9">    }</span>
 
     public boolean validate(String email) throws EmailVerificationException {
-<span class="fc bfc" id="L12" title="All 2 branches covered.">        for (String existingEmail : existingEmails) {</span>
-<span class="fc bfc" id="L13" title="All 2 branches covered.">            if (existingEmail.equalsIgnoreCase(email)) {</span>
-<span class="fc" id="L14">                throw new EmailVerificationException(</span>
+        // Pattern: basic username@domain.com validation
+<span class="fc bfc" id="L13" title="All 2 branches covered.">        if (!email.matches(&quot;^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$&quot;)) {</span>
+<span class="fc" id="L14">            throw new EmailVerificationException(&quot;Invalid email format. Please use the format username@domain.com.&quot;);</span>
+        }
+
+<span class="fc bfc" id="L17" title="All 2 branches covered.">        for (String existingEmail : existingEmails) {</span>
+<span class="fc bfc" id="L18" title="All 2 branches covered.">            if (existingEmail.equalsIgnoreCase(email)) {</span>
+<span class="fc" id="L19">                throw new EmailVerificationException(</span>
                         &quot;This email address is already associated with an existing account. Please use a different email.&quot;
                 );
             }
-<span class="fc" id="L18">        }</span>
-<span class="fc" id="L19">        return true;</span>
+<span class="fc" id="L23">        }</span>
+
+<span class="fc" id="L25">        return true;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
