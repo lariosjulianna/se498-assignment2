@@ -21,6 +21,11 @@ public class PasswordVerificationRuleTest {
     }
 
     @Test
+    public void testPasswordWithoutLowercase() {
+        assertThrows(PasswordVerificationException.class, () -> passwordRule.validate("PASSWORD123"));
+    }
+
+    @Test
     public void testPasswordWithoutNumber() {
         assertThrows(PasswordVerificationException.class, () -> passwordRule.validate("Password"));
     }

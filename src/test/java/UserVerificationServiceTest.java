@@ -23,4 +23,15 @@ public class UserVerificationServiceTest {
         String result = service.verifyUser("goodusername", "short");
         assertEquals("Verification failed: Password must be at least 8 characters long.", result);
     }
+
+    @Test
+    public void testUserConstructorAndGetters() {
+        String expectedUsername = "validusername";
+        String expectedPassword = "ValidPassword123";
+
+        User user = new User(expectedUsername, expectedPassword);
+
+        assertEquals(expectedUsername, user.getUsername());
+        assertEquals(expectedPassword, user.getPassword());
+    }
 }

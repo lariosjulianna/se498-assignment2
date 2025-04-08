@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.se498.BusinessRuleServiceTest
 -------------------------------------------------------------------------------
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.270 s -- in com.se498.BusinessRuleServiceTest
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.071 s -- in com.se498.BusinessRuleServiceTest
