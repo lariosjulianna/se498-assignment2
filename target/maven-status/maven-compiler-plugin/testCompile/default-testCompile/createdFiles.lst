@@ -5,3 +5,4 @@ com/se498/BusinessRuleServiceTest$AgeRestrictionTests.class
 EmailVerificationRuleTest.class
 com/se498/BusinessRuleServiceTest$RuleTestContainer.class
 com/se498/BusinessRuleServiceTest.class
+ClassCodeVerificationRuleTest.class

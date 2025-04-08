@@ -2,6 +2,7 @@ EmailVerificationRule.class
 com/se498/BusinessRule.class
 com/se498/ConversionStrategyException.class
 com/se498/ConversionStrategyFactory$InstanceHolder.class
+ClassCodeValidationException.class
 com/se498/ConversionStrategyFactory.class
 com/se498/AgeRestrictionException.class
 RequiredFieldVerificationRule.class
@@ -13,5 +14,6 @@ RequiredFieldException.class
 com/se498/BusinessRuleService.class
 EmailVerificationException.class
 com/se498/Participant.class
+ClassCodeVerificationRule.class
 com/se498/ConversionStrategy.class
 com/se498/EUConversionStrategy.class

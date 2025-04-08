@@ -4,7 +4,9 @@ Assignment2,default,RequiredFieldVerificationRule,0,60,1,13,0,13,1,9,0,3
 Assignment2,default,PasswordVerificationException,0,4,0,0,0,2,0,1,0,1
 Assignment2,default,EmailVerificationRule,0,38,0,6,0,10,0,5,0,2
 Assignment2,default,EmailVerificationException,0,4,0,0,0,2,0,1,0,1
+Assignment2,default,ClassCodeVerificationRule,0,30,0,6,0,8,0,5,0,2
 Assignment2,default,PasswordVerificationRule,0,41,0,8,0,10,0,6,0,2
+Assignment2,default,ClassCodeValidationException,0,4,0,0,0,2,0,1,0,1
 Assignment2,default,UserVerificationException,0,4,0,0,0,2,0,1,0,1
 Assignment2,default,UsernameVerificationException,0,4,0,0,0,2,0,1,0,1
 Assignment2,default,UserVerificationService,0,22,0,0,0,7,0,2,0,2
