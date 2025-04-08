@@ -16,4 +16,6 @@ EmailVerificationException.class
 com/se498/Participant.class
 ClassCodeVerificationRule.class
 com/se498/ConversionStrategy.class
+RosterVerificationRule.class
+RosterValidationException.class
 com/se498/EUConversionStrategy.class

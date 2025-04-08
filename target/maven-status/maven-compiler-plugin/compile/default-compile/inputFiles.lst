@@ -6,6 +6,8 @@
 /Users/Zuly/Documents/GitHub/assignment3/src/main/java/PasswordVerificationRule.java
 /Users/Zuly/Documents/GitHub/assignment3/src/main/java/RequiredFieldException.java
 /Users/Zuly/Documents/GitHub/assignment3/src/main/java/RequiredFieldVerificationRule.java
+/Users/Zuly/Documents/GitHub/assignment3/src/main/java/RosterValidationException.java
+/Users/Zuly/Documents/GitHub/assignment3/src/main/java/RosterVerificationRule.java
 /Users/Zuly/Documents/GitHub/assignment3/src/main/java/User.java
 /Users/Zuly/Documents/GitHub/assignment3/src/main/java/UserVerificationBusinessRule.java
 /Users/Zuly/Documents/GitHub/assignment3/src/main/java/UserVerificationException.java
