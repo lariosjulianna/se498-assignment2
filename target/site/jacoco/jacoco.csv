@@ -4,6 +4,8 @@ Assignment2,default,User,0,15,0,0,0,6,0,3,0,3
 Assignment2,default,UsernameVerificationException,0,4,0,0,0,2,0,1,0,1
 Assignment2,default,UserVerificationService,0,22,0,0,0,7,0,2,0,2
 Assignment2,default,PasswordVerificationException,0,4,0,0,0,2,0,1,0,1
+Assignment2,default,EmailVerificationRule,0,29,0,4,0,8,0,4,0,2
+Assignment2,default,EmailVerificationException,0,4,0,0,0,2,0,1,0,1
 Assignment2,default,UsernameVerificationRule,0,45,0,6,0,9,0,5,0,2
 Assignment2,default,UserVerificationBusinessRule,0,33,0,0,0,9,0,2,0,2
 Assignment2,default,PasswordVerificationRule,0,41,0,8,0,10,0,6,0,2

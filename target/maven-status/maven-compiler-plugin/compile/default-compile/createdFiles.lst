@@ -1,7 +1,9 @@
+EmailVerificationRule.class
 com/se498/BusinessRule.class
 com/se498/ConversionStrategyException.class
 com/se498/ConversionStrategyFactory$InstanceHolder.class
 com/se498/BusinessRuleService.class
+EmailVerificationException.class
 com/se498/ConversionStrategyFactory.class
 com/se498/AgeRestrictionException.class
 com/se498/Participant.class
