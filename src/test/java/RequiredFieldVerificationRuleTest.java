@@ -62,4 +62,32 @@ public class RequiredFieldVerificationRuleTest {
         );
         assertEquals("Full Name is required.", exception.getMessage()); // Stops at the first error
     }
+
+    // Test cases for isBlank with null, empty, and whitespace strings
+    @Test
+    public void testIsBlankWithNullValue() {
+        RequiredFieldException exception = assertThrows(
+                RequiredFieldException.class,
+                () -> rule.validate(null, "jane@example.com", "Password123", "janedoe", "ABC123")
+        );
+        assertEquals("Full Name is required.", exception.getMessage());
+    }
+
+    @Test
+    public void testIsBlankWithEmptyString() {
+        RequiredFieldException exception = assertThrows(
+                RequiredFieldException.class,
+                () -> rule.validate("", "jane@example.com", "Password123", "janedoe", "ABC123")
+        );
+        assertEquals("Full Name is required.", exception.getMessage());
+    }
+
+    @Test
+    public void testIsBlankWithWhitespaceString() {
+        RequiredFieldException exception = assertThrows(
+                RequiredFieldException.class,
+                () -> rule.validate("   ", "jane@example.com", "Password123", "janedoe", "ABC123")
+        );
+        assertEquals("Full Name is required.", exception.getMessage());
+    }
 }

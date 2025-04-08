@@ -10,13 +10,13 @@ public class RosterVerificationRule {
 <span class="fc" id="L10">    }</span>
 
     public List&lt;String&gt; getRosterForClassCode(String classCode) throws RosterValidationException {
-<span class="pc bpc" id="L13" title="1 of 4 branches missed.">        if (classCode == null || classCode.trim().isEmpty()) {</span>
+<span class="fc bfc" id="L13" title="All 4 branches covered.">        if (classCode == null || classCode.trim().isEmpty()) {</span>
 <span class="fc" id="L14">            throw new RosterValidationException(&quot;Class Code is required to view the roster.&quot;);</span>
         }
 
 <span class="fc" id="L17">        List&lt;String&gt; students = rosterData.get(classCode.trim());</span>
 
-<span class="pc bpc" id="L19" title="1 of 4 branches missed.">        if (students == null || students.isEmpty()) {</span>
+<span class="fc bfc" id="L19" title="All 4 branches covered.">        if (students == null || students.isEmpty()) {</span>
 <span class="fc" id="L20">            throw new RosterValidationException(&quot;No students found for this class code.&quot;);</span>
         }
 

@@ -49,4 +49,29 @@ public class RosterVerificationRuleTest {
         assertEquals(1, roster.size());
         assertEquals("alpha@school.edu", roster.get(0));
     }
+
+    @Test
+    public void testNullClassCodeThrowsException() {
+        RosterValidationException exception = assertThrows(
+                RosterValidationException.class,
+                () -> rule.getRosterForClassCode(null)
+        );
+        assertEquals("Class Code is required to view the roster.", exception.getMessage());
+    }
+
+    @Test
+    public void testClassCodeWithEmptyRosterThrowsException() {
+        Map<String, List<String>> modifiedRoster = Map.of(
+                "XYZ789", List.of("student1@school.edu", "student2@school.edu"),
+                "ABC123", List.of()
+        );
+
+        RosterVerificationRule modifiedRule = new RosterVerificationRule(modifiedRoster);
+
+        RosterValidationException exception = assertThrows(
+                RosterValidationException.class,
+                () -> modifiedRule.getRosterForClassCode("ABC123")
+        );
+        assertEquals("No students found for this class code.", exception.getMessage());
+    }
 }
