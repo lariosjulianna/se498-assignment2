@@ -9,7 +9,6 @@ public class EmailVerificationRule {
     }
 
     public boolean validate(String email) throws EmailVerificationException {
-        // Pattern: basic username@domain.com validation
         if (!email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$")) {
             throw new EmailVerificationException("Invalid email format. Please use the format username@domain.com.");
         }

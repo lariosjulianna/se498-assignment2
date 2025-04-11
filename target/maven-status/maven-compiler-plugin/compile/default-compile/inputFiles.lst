@@ -14,15 +14,6 @@
 /Users/Zuly/Documents/GitHub/assignment3/src/main/java/UserVerificationService.java
 /Users/Zuly/Documents/GitHub/assignment3/src/main/java/UsernameVerificationException.java
 /Users/Zuly/Documents/GitHub/assignment3/src/main/java/UsernameVerificationRule.java
-/Users/Zuly/Documents/GitHub/assignment3/src/main/java/com/se498/AgeRestrictionBusinessRule.java
-/Users/Zuly/Documents/GitHub/assignment3/src/main/java/com/se498/AgeRestrictionException.java
 /Users/Zuly/Documents/GitHub/assignment3/src/main/java/com/se498/BusinessRule.java
 /Users/Zuly/Documents/GitHub/assignment3/src/main/java/com/se498/BusinessRuleService.java
-/Users/Zuly/Documents/GitHub/assignment3/src/main/java/com/se498/Command.java
-/Users/Zuly/Documents/GitHub/assignment3/src/main/java/com/se498/ConversionCommand.java
-/Users/Zuly/Documents/GitHub/assignment3/src/main/java/com/se498/ConversionStrategy.java
-/Users/Zuly/Documents/GitHub/assignment3/src/main/java/com/se498/ConversionStrategyException.java
-/Users/Zuly/Documents/GitHub/assignment3/src/main/java/com/se498/ConversionStrategyFactory.java
-/Users/Zuly/Documents/GitHub/assignment3/src/main/java/com/se498/EUConversionStrategy.java
-/Users/Zuly/Documents/GitHub/assignment3/src/main/java/com/se498/Participant.java
-/Users/Zuly/Documents/GitHub/assignment3/src/main/java/com/se498/USConversionStrategy.java
+/Users/Zuly/Documents/GitHub/assignment3/src/main/java/com/se498/EmailVerificationRule.java

@@ -1,9 +1,12 @@
 com/se498/BusinessRuleServiceTest$TestRuleBuilder.class
 com/se498/BusinessRuleServiceTest$TestRuleBuilder$1.class
 RosterVerificationRuleTest.class
+UsernameVerificationRuleTest.class
 RequiredFieldVerificationRuleTest.class
-com/se498/BusinessRuleServiceTest$AgeRestrictionTests.class
 EmailVerificationRuleTest.class
 com/se498/BusinessRuleServiceTest$RuleTestContainer.class
+UserVerificationServiceTest.class
+com/se498/BusinessRuleServiceTest$EmailValidationTests.class
+PasswordVerificationRuleTest.class
 com/se498/BusinessRuleServiceTest.class
 ClassCodeVerificationRuleTest.class

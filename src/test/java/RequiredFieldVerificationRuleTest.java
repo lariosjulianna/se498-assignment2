@@ -63,7 +63,6 @@ public class RequiredFieldVerificationRuleTest {
         assertEquals("Full Name is required.", exception.getMessage()); // Stops at the first error
     }
 
-    // Test cases for isBlank with null, empty, and whitespace strings
     @Test
     public void testIsBlankWithNullValue() {
         RequiredFieldException exception = assertThrows(
