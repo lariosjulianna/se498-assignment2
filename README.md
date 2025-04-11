@@ -1,5 +1,5 @@
 # SE498 Assignment 2 - Striking Vipers
-###*Zuleyka Urieta and Julianna Larios*
+### *Zuleyka Urieta and Julianna Larios*
 ---
 
 
