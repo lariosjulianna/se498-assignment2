@@ -136,17 +136,21 @@ public class BusinessRuleServiceTest {
     @EnabledOnOs(OS.MAC)
     @DisplayName("Test that only runs on Mac")
     void testOperatingSystemOnly() {
-        // This test demonstrates OS-specific validation
         assertTrue(true, "This test only runs on Mac OS");
     }
 
     // Assumption Test
     @Test
-    @DisplayName("Test with assumptions")
+    @DisplayName("Test with assumptions for education email domain")
     void testWithAssumption() {
-        String environment = System.getProperty("test.environment", "development");
-        assumeTrue("production".equals(environment), "Skipping test: not in production");
-        // Test production-specific validation rules
+        String testEmail = "student@chapman.edu";
+        String emailDomain = testEmail.substring(testEmail.indexOf("@") + 1);
+        
+        assumeTrue(emailDomain.endsWith(".edu"), "Skipping test: not an educational email");
+
+        EmailVerificationRule rule = new EmailVerificationRule(List.of());
+        assertTrue(testService.applyBusinessRule(rule, testEmail), 
+            "Educational email should be valid");
     }
 
     // Nested Test
