@@ -12,3 +12,6 @@ A Java project implementing business rule validation for a student registration 
 - **Unit Tests**: Cover individual components like email format, password strength, and field validation
 - **Business Rule Service Test Class**: Covers various test patterns with regard to email validation requirements/expected behavior
 
+## Important Note: How to run the project
+- Run the project using "mvn package"
+- NOTE: You must use Java 21 to run the project. Anything above this version will result in Mockito errors with regard to the Spy test implementation
