@@ -24,8 +24,8 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class BusinessRuleServiceTest {
 
-    private static BusinessRuleService globalService;
     private BusinessRuleService testService;
+    private BusinessRuleFactory ruleFactory;
 
     @Mock
     private BusinessRule mockRule;
@@ -55,15 +55,7 @@ public class BusinessRuleServiceTest {
         }
 
         public BusinessRule build() {
-            return new BusinessRule() {
-                @Override
-                public boolean apply(Object objectToCheck) throws Exception {
-                    if (throwsException) {
-                        throw new Exception(errorMessage);
-                    }
-                    return returnValue;
-                }
-            };
+            return BusinessRuleFactory.getInstance().createCustomRule(returnValue, throwsException, errorMessage);
         }
     }
 
@@ -92,12 +84,13 @@ public class BusinessRuleServiceTest {
     // Lifecycle Methods
     @BeforeAll
     static void initAll() {
-        globalService = new BusinessRuleService();
+        new BusinessRuleService();
     }
 
     @BeforeEach
     void init() {
         testService = new BusinessRuleService();
+        ruleFactory = BusinessRuleFactory.getInstance();
     }
 
     @AfterEach
@@ -107,14 +100,13 @@ public class BusinessRuleServiceTest {
 
     @AfterAll
     static void tearDownAll() {
-        globalService = null;
     }
 
     // Basic Assertions
     @Test
     @DisplayName("Basic test for applyBusinessRule")
     void testApplyBusinessRule() {
-        EmailVerificationRule rule = new EmailVerificationRule(List.of("existing@example.com"));
+        BusinessRule rule = ruleFactory.createEmailVerificationRule(List.of("existing@example.com"));
         assertTrue(testService.applyBusinessRule(rule, "new@example.com"));
         assertFalse(testService.applyBusinessRule(rule, "existing@example.com"));
     }
@@ -148,7 +140,7 @@ public class BusinessRuleServiceTest {
         
         assumeTrue(emailDomain.endsWith(".edu"), "Skipping test: not an educational email");
 
-        EmailVerificationRule rule = new EmailVerificationRule(List.of());
+        BusinessRule rule = ruleFactory.createEmailVerificationRule();
         assertTrue(testService.applyBusinessRule(rule, testEmail), 
             "Educational email should be valid");
     }
@@ -161,14 +153,14 @@ public class BusinessRuleServiceTest {
         @Test
         @DisplayName("Test valid email")
         void testValidEmail() {
-            EmailVerificationRule rule = new EmailVerificationRule(List.of());
+            BusinessRule rule = ruleFactory.createEmailVerificationRule();
             assertTrue(testService.applyBusinessRule(rule, "test@example.com"));
         }
 
         @Test
         @DisplayName("Test invalid email")
         void testInvalidEmail() {
-            EmailVerificationRule rule = new EmailVerificationRule(List.of());
+            BusinessRule rule = ruleFactory.createEmailVerificationRule();
             assertFalse(testService.applyBusinessRule(rule, "invalid-email"));
         }
     }
@@ -177,7 +169,7 @@ public class BusinessRuleServiceTest {
     @TestFactory
     @DisplayName("Dynamic tests for email validation")
     Stream<DynamicTest> dynamicEmailTests() {
-        EmailVerificationRule rule = new EmailVerificationRule(List.of("existing@example.com"));
+        BusinessRule rule = ruleFactory.createEmailVerificationRule(List.of("existing@example.com"));
         return Stream.of(
             dynamicTest("Valid new email", () -> 
                 assertTrue(testService.applyBusinessRule(rule, "new@example.com"))),
@@ -193,7 +185,7 @@ public class BusinessRuleServiceTest {
     @ValueSource(strings = {"test@example.com", "user@domain.com", "valid@email.org"})
     @DisplayName("Test valid emails with parameterized test")
     void testValidEmailParameterized(String email) {
-        EmailVerificationRule rule = new EmailVerificationRule(List.of());
+        BusinessRule rule = ruleFactory.createEmailVerificationRule();
         assertTrue(testService.applyBusinessRule(rule, email));
     }
 
@@ -205,7 +197,7 @@ public class BusinessRuleServiceTest {
     })
     @DisplayName("Test emails with expected results")
     void testEmailWithExpectedResult(String email, boolean expected) {
-        EmailVerificationRule rule = new EmailVerificationRule(List.of("existing@example.com"));
+        BusinessRule rule = ruleFactory.createEmailVerificationRule(List.of("existing@example.com"));
         assertEquals(expected, testService.applyBusinessRule(rule, email));
     }
 
@@ -226,7 +218,7 @@ public class BusinessRuleServiceTest {
     @RepeatedTest(5)
     @DisplayName("Repeated email validation test")
     void repeatedTest() {
-        EmailVerificationRule rule = new EmailVerificationRule(List.of());
+        BusinessRule rule = ruleFactory.createEmailVerificationRule();
         assertTrue(testService.applyBusinessRule(rule, "test@example.com"));
     }
 
@@ -250,7 +242,7 @@ public class BusinessRuleServiceTest {
     @Test
     @DisplayName("Test with container pattern")
     void testWithContainer() {
-        EmailVerificationRule rule = new EmailVerificationRule(List.of());
+        BusinessRule rule = ruleFactory.createEmailVerificationRule();
         try (RuleTestContainer container = new RuleTestContainer(rule, "test@example.com")) {
             assertTrue(container.runTest());
         }
@@ -272,7 +264,7 @@ public class BusinessRuleServiceTest {
             "@incomplete.com"
         );
 
-        EmailVerificationRule rule = new EmailVerificationRule(List.of());
+        BusinessRule rule = ruleFactory.createEmailVerificationRule();
 
         for (String email : validEmails) {
             assertTrue(testService.applyBusinessRule(rule, email));
@@ -323,7 +315,7 @@ public class BusinessRuleServiceTest {
     @Test
     @DisplayName("Test non-string input")
     void testNonStringInput() {
-        EmailVerificationRule rule = new EmailVerificationRule(List.of());
+        BusinessRule rule = ruleFactory.createEmailVerificationRule();
         Integer nonStringInput = 123;
         
         Exception exception = assertThrows(IllegalArgumentException.class, () -> 
@@ -334,7 +326,7 @@ public class BusinessRuleServiceTest {
     @Test
     @DisplayName("Test null or empty email")
     void testNullOrEmptyEmail() {
-        EmailVerificationRule rule = new EmailVerificationRule(List.of());
+        BusinessRule rule = ruleFactory.createEmailVerificationRule();
         
         // Test null email
         Exception nullException = assertThrows(Exception.class, () -> 

@@ -1,15 +1,15 @@
-EmailVerificationRule.class
 com/se498/BusinessRule.class
 UsernameVerificationRule.class
 RequiredFieldException.class
 com/se498/BusinessRuleService.class
 PasswordVerificationRule.class
-EmailVerificationException.class
+com/se498/BusinessRuleFactory$1.class
 UserVerificationService.class
 ClassCodeValidationException.class
 UserVerificationException.class
 UserVerificationBusinessRule.class
 com/se498/EmailVerificationRule.class
+com/se498/EmailVerificationException.class
 User.class
 RequiredFieldVerificationRule.class
 PasswordVerificationException.class
@@ -17,3 +17,4 @@ UsernameVerificationException.class
 ClassCodeVerificationRule.class
 RosterVerificationRule.class
 RosterValidationException.class
+com/se498/BusinessRuleFactory.class

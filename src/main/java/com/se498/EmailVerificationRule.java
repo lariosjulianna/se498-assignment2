@@ -27,15 +27,22 @@ public class EmailVerificationRule implements BusinessRule {
         }
 
         String email = (String) objectToCheck;
-        
-        if (email.trim().isEmpty()) {
-            throw new Exception("Email cannot be empty");
+        return validate(email);
+    }
+
+    public boolean validate(String email) throws EmailVerificationException {
+        if (email == null || email.trim().isEmpty()) {
+            throw new EmailVerificationException("Email cannot be empty");
         }
 
         if (!Pattern.matches(EMAIL_REGEX, email)) {
-            throw new Exception("Invalid email format");
+            throw new EmailVerificationException("Invalid email format. Please use the format username@domain.com.");
         }
 
-        return !existingEmails.contains(email.toLowerCase());
+        if (existingEmails.contains(email.toLowerCase())) {
+            throw new EmailVerificationException("This email address is already associated with an existing account. Please use a different email.");
+        }
+
+        return true;
     }
-} 
+}

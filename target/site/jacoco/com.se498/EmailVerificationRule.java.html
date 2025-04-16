@@ -27,16 +27,23 @@ public class EmailVerificationRule implements BusinessRule {
         }
 
 <span class="fc" id="L29">        String email = (String) objectToCheck;</span>
-        
-<span class="fc bfc" id="L31" title="All 2 branches covered.">        if (email.trim().isEmpty()) {</span>
-<span class="fc" id="L32">            throw new Exception(&quot;Email cannot be empty&quot;);</span>
-        }
-
-<span class="fc bfc" id="L35" title="All 2 branches covered.">        if (!Pattern.matches(EMAIL_REGEX, email)) {</span>
-<span class="fc" id="L36">            throw new Exception(&quot;Invalid email format&quot;);</span>
-        }
-
-<span class="fc bfc" id="L39" title="All 2 branches covered.">        return !existingEmails.contains(email.toLowerCase());</span>
+<span class="fc" id="L30">        return validate(email);</span>
     }
-} 
+
+    public boolean validate(String email) throws EmailVerificationException {
+<span class="fc bfc" id="L34" title="All 4 branches covered.">        if (email == null || email.trim().isEmpty()) {</span>
+<span class="fc" id="L35">            throw new EmailVerificationException(&quot;Email cannot be empty&quot;);</span>
+        }
+
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        if (!Pattern.matches(EMAIL_REGEX, email)) {</span>
+<span class="fc" id="L39">            throw new EmailVerificationException(&quot;Invalid email format. Please use the format username@domain.com.&quot;);</span>
+        }
+
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if (existingEmails.contains(email.toLowerCase())) {</span>
+<span class="fc" id="L43">            throw new EmailVerificationException(&quot;This email address is already associated with an existing account. Please use a different email.&quot;);</span>
+        }
+
+<span class="fc" id="L46">        return true;</span>
+    }
+}
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

@@ -1,4 +1,8 @@
 import org.junit.jupiter.api.Test;
+
+import com.se498.EmailVerificationException;
+import com.se498.EmailVerificationRule;
+
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,6 +10,7 @@ public class EmailVerificationRuleTest {
 
     private final List<String> existingEmails = List.of("existinguser@example.com");
     private final EmailVerificationRule emailRule = new EmailVerificationRule(existingEmails);
+    private final EmailVerificationRule validator = new EmailVerificationRule();
 
     @Test
     public void testUniqueEmailPasses() throws EmailVerificationException {
@@ -43,5 +48,32 @@ public class EmailVerificationRuleTest {
     @Test
     public void testInvalidEmailMissingDomain() {
         assertThrows(EmailVerificationException.class, () -> emailRule.validate("user@"));
+    }
+
+    @Test
+    void testValidate_nullEmail_throwsException() {
+        EmailVerificationException exception = assertThrows(
+                EmailVerificationException.class,
+                () -> validator.validate(null)
+        );
+        assertEquals("Email cannot be empty", exception.getMessage());
+    }
+
+    @Test
+    void testValidate_emptyEmail_throwsException() {
+        EmailVerificationException exception = assertThrows(
+                EmailVerificationException.class,
+                () -> validator.validate("")
+        );
+        assertEquals("Email cannot be empty", exception.getMessage());
+    }
+
+    @Test
+    void testValidate_blankEmail_throwsException() {
+        EmailVerificationException exception = assertThrows(
+                EmailVerificationException.class,
+                () -> validator.validate("   ")
+        );
+        assertEquals("Email cannot be empty", exception.getMessage());
     }
 }
